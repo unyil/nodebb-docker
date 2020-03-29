@@ -1,0 +1,33 @@
+version: '3.7'
+
+services:
+  nodebbx:
+    image: vimagick/nodebb
+    ports:
+      - "4580:4580"
+    links:
+      - mongo
+    volumes:
+      - ./data:/var/lib/nodebb
+      - /usr/src/nodebb/build
+      - /usr/src/nodebb/node_modules
+      - /usr/src/nodebb/public/uploads
+    restart: always
+
+  mongo:
+    image: mongo
+    ports:
+      - "127.0.0.1:27017:27017"
+    volumes:
+      - /data/mongodb/db:/data/db
+    restart: always
+
+  nginx:
+    image: nginx:alpine
+    volumes:
+      - ./nodebb.conf:/etc/nginx/conf.d/nodebb.conf
+    ports:
+      - 1337:8080
+    links:
+      - nodebbx
+    restart: always

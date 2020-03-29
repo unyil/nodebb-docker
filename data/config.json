@@ -1,0 +1,14 @@
+{
+    "url": "http://forum3.neexnode.my.id",
+    "secret": "1bf09b64-1020-4c79-8f6b-1e83be3d0e56",
+    "database": "mongo",
+    "port": "4580",
+    "mongo": {
+        "host": "mongo",
+        "port": "27017",
+        "username": "nodebb",
+        "password": "",
+        "database": "nodebb",
+        "uri": ""
+    }
+}
