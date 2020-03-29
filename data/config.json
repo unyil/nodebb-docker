@@ -5,7 +5,7 @@
     "port": "4580",
     "mongo": {
         "host": "mongo",
-        "port": "27017",
+        "port": "28018",
         "username": "nodebb",
         "password": "",
         "database": "nodebb",

@@ -5,8 +5,6 @@ services:
     image: vimagick/nodebb
     ports:
       - "4580:4580"
-    links:
-      - mongo
     volumes:
       - ./data:/var/lib/nodebb
       - /usr/src/nodebb/build
@@ -15,9 +13,10 @@ services:
     restart: always
 
   mongo:
-    image: mongo
+    image: "mongo:latest"
+    command: mongod --port 28018
     ports:
-      - "127.0.0.1:27017:27017"
+      - "28018:28018"
     volumes:
       - /data/mongodb/db:/data/db
     restart: always
@@ -27,7 +26,7 @@ services:
     volumes:
       - ./nodebb.conf:/etc/nginx/conf.d/nodebb.conf
     ports:
-      - 1337:8080
+      - 80:8080
     links:
       - nodebbx
     restart: always
